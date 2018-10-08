@@ -4,6 +4,9 @@
 <a href="https://medium.com" target="_blank"><img src="https://cdn-images-1.medium.com/max/2000/1*Ia4dK-kcaSfztzHIhtMmaQ.png" alt="Kotlin + MVP + Dagger + Retrofit + RxJava2" width="800"></a>
 
 
+* The application uses the [Hearthis.at](https://hearthis.at/) api:
+  -https://api-v2.hearthis.at/categories/
+  -https://api-v2.hearthis.at/categories/{category_id}/?page=1&count=10
 
 
 ### Libraries & Documents:
