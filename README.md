@@ -5,8 +5,9 @@
 
 
 * The application uses the [Hearthis.at](https://hearthis.at/) api:
-  -https://api-v2.hearthis.at/categories/
-  -https://api-v2.hearthis.at/categories/{category_id}/?page=1&count=10
+
+1. https://api-v2.hearthis.at/categories/
+2. https://api-v2.hearthis.at/categories/{category_id}/?page=1&count=10
 
 
 ### Libraries & Documents:
