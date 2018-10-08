@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3C5F78"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3C5F78"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.zilla.android.ui.widget.ShadowImageView
+                android:id="@+id/imageViewAlbum"
+                android:layout_width="260dp"
+                android:layout_height="260dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/default_record_album" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="?attr/colorAccent"
+            android:textSize="18sp"
+            tools:text="Drag me down" />
+
+        <TextView
+            android:id="@+id/textViewArtist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="?attr/colorAccent"
+            android:textSize="14sp"
+            tools:text="One Direction" />
+
+        <LinearLayout
+            android:id="@+id/layoutProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center_vertical"
+            android:minHeight="44dp">
+
+            <TextView
+                android:id="@+id/textViewProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="00:00"
+                android:textColor="?attr/colorAccent"
+                android:textSize="12sp" />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/seekBarProgress"
+                style="@style/Widget.AppCompat.SeekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="10000"
+                tools:progress="5000" />
+
+            <TextView
+                android:id="@+id/textViewDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="00:00"
+                android:textColor="?attr/colorAccent"
+                android:textSize="12sp"
+                tools:text="03:22" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutPlayControls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:divider="@drawable/common_divider_xlarge_horizontal"
+            android:gravity="center_vertical"
+            android:showDividers="middle">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/buttonPlayModeToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/ic_play_mode_shuffle" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/buttonPlayLast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/ic_play_last" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/buttonPlayToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/ic_play" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/buttonPlayNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/ic_play_next" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/buttonFavoriteToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="center"
+                app:srcCompat="@drawable/ic_favorite_no" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/llPLayList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3C5F78"
+        android:visibility="gone"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewPlayList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <RadioButton
+        android:id="@+id/radioButtonShowPlayList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:button="@drawable/selector_main_nav_play_list"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        tools:button="@drawable/ic_main_nav_play_list_selected"
+        tools:checked="true"/>
+
+</RelativeLayout>

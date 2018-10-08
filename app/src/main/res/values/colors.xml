@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="colorPrimary">#3C5F78</color>
+    <color name="colorPrimaryDark">#3C5F78</color>
+    <color name="colorAccent">#DDF9FF</color>
+
+    <color name="dark_blue_background">#3C5F78</color>
+    <color name="dark_blue_gradientColor">#507E9F</color>
+
+    <drawable name="list_bg_selector">#6CDDF9FF</drawable>
+    <drawable name="list_bg_normal_selector">#1ADDF9FF</drawable>
+</resources>
