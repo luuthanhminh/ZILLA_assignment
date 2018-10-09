@@ -27,19 +27,29 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.EventBus
 import android.graphics.Bitmap
 import android.R.attr.path
+import android.app.Dialog
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.animation.GlideAnimation
 import com.bumptech.glide.request.target.SimpleTarget
 import com.zilla.android.ui.category.ListCategoryAdapter
+import com.zilla.android.ui.widget.ProgressDialog
 import kotlinx.android.synthetic.main.activity_category.*
 
 
 class MusicPlayerActivity: AppCompatActivity(), MusicPlayerContract.View, IPlayback.Callback {
 
-    override fun showProgress(show: Boolean) {
+    private var dialog: Dialog? = null
 
+    override fun showProgress(show: Boolean) {
+        if(dialog == null){
+            dialog = ProgressDialog.progressDialog(this@MusicPlayerActivity)
+        }
+        if(show)
+            dialog!!.show()
+        else
+            dialog!!.hide()
     }
 
     override fun getSongByPlayListSuccess(list: List<Song>) {
@@ -280,14 +290,14 @@ class MusicPlayerActivity: AppCompatActivity(), MusicPlayerContract.View, IPlayb
 
 
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe(threadMode = ThreadMode.MAIN_ORDERED)
     fun onPlayListNowEvent(event: PlayListNowEvent) {
         val playList = event.playList
         val playIndex = event.playIndex
         playSong(playList, playIndex)
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe(threadMode = ThreadMode.MAIN_ORDERED)
     fun onPlaySongEvent(event: PlaySongEvent) {
         val song = event.song
         playSong(song)

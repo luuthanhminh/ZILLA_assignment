@@ -10,6 +10,8 @@ import com.zilla.android.models.Category
 import com.zilla.android.models.Song
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 class MusicPlayerPresenter constructor() : MusicPlayerContract.Presenter {
@@ -18,11 +20,15 @@ class MusicPlayerPresenter constructor() : MusicPlayerContract.Presenter {
     override fun onGetSongByPlayList(category: Category) {
         var subscribe = api.getSongByPlayList(category.id).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ list: List<Song>? ->
+                .doOnSubscribe {
+                    view.showProgress(true)
+                }
+                .doOnTerminate {
                     view.showProgress(false)
+                }
+                .subscribe({ list: List<Song>? ->
                     view.getSongByPlayListSuccess(list!!)
                 }, { error ->
-                    view.showProgress(false)
                     view.getSongByPlayListFail(error)
                 })
         subscriptions.add(subscribe)
@@ -76,8 +82,6 @@ class MusicPlayerPresenter constructor() : MusicPlayerContract.Presenter {
     override fun attach(view: MusicPlayerContract.View) {
         this.view = view
     }
-
-
 
 
     override fun retrieveLastPlayMode() {

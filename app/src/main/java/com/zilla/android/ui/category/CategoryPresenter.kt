@@ -28,11 +28,15 @@ class CategoryPresenter: CategoryContract.Presenter {
     override fun onGetCategories() {
         var subscribe = api.getCategories().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ list: List<Category>? ->
+                .doOnSubscribe {
+                    view.showProgress(true)
+                }
+                .doOnTerminate {
                     view.showProgress(false)
+                }
+                .subscribe({ list: List<Category>? ->
                     view.getCategoriesSuccess(list!!)
                 }, { error ->
-                    view.showProgress(false)
                     view.getCategoriesFail(error)
                 })
         subscriptions.add(subscribe)
